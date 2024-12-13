@@ -22,12 +22,28 @@ class SimpleThread extends Thread {
     }
 }
 
+class SimpleRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Simple Runnable Started");
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (Exception e) {
+            System.out.println("Interrupted");
+        }
+        System.out.println("Simple Runnable Ending");
+    }
+}
+
 public class SimpleThreadMain {
     public static void main(String[] args) {
         for(int i=0; i<5; i++){
             SimpleThread mySimpleThread = new SimpleThread("Thread-" + Integer.toString(i), 1);
             mySimpleThread.start();
         }
+        SimpleRunnable myRunnable = new SimpleRunnable();
+        Thread runablThread = new Thread(myRunnable);
+        runablThread.start();
         
         System.out.println("This is main code");
     }
