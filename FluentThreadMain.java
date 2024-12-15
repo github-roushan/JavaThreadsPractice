@@ -14,7 +14,7 @@ class FluentRunnable implements Runnable {
 public class FluentThreadMain {
     public static void main(String[] args) {
         Runnable r = new FluentRunnable();
-        Thread thread = Thread.ofPlatform().name("Fluent Thread").daemon(true).start(r);
+        Thread.ofPlatform().name("Fluent Thread").start(r);
         System.out.println("Main Code: Code Ran Successfully");
     }
 }
