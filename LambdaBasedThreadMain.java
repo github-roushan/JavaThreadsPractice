@@ -8,24 +8,23 @@ class ThreadPlay {
         } catch (Exception e) {
             System.out.println("Some Exception Occurred");
         }
-        System.out.println("Time Spent Coding"); // :(
+        System.out.println(Thread.currentThread().getName() + ": Time Spent Coding was so less"); // :(
     }
 }
 public class LambdaBasedThreadMain {
     public static void main(String[] args) {
         Thread.ofPlatform().start(() -> {
-            System.out.println("Thread: This was ran from a thread");
+            System.out.println("Lambda Thread: This was ran from a thread");
             try {
                 TimeUnit.SECONDS.sleep(5);
             } catch (Exception e) {
                 System.out.println("Interrupted");
             }
-            System.out.println("Thread: Ending thread");
+            System.out.println("Lambda Thread: Ending thread");
         });
 
         // Method Reference
-        Thread.ofPlatform().start(ThreadPlay::doSomething);
-
+        Thread.ofPlatform().name("Method Reference").start(ThreadPlay::doSomething);
         System.out.println("Main Code: This is ran from main");
     }
 }

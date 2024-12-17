@@ -6,8 +6,9 @@ class FluentRunnable implements Runnable {
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (Exception e) {
-            System.out.println("Exception Occurred");
+            System.out.println(Thread.currentThread().getName() + " Exception Occurred");
         }
+        System.out.println(Thread.currentThread().getName() + ": Done");
     }
 }
 
